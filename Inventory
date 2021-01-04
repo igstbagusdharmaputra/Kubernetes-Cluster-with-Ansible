@@ -1,0 +1,42 @@
+#[all]
+#dharma  ansible_connection=local
+#dharma ansible_host=192.168.1.254 ansible_user=dharma
+#dharma 192.168.1.254
+#[masters]
+#dharma ansible_host=192.168.1.254 ansible_ssh_pass=123ansible_ssh_pass=123 ansible_user=dharma
+#dharma ansible_host=192.168.1.254 ansible_user=ubuntu
+
+#[workers]
+#mariadb1 ansible_host=192.168.1.100 ansible_ssh_pass=123 ansible_user=root
+#mariadb1 ansible_host=192.168.1.100 ansible_user=root
+#mariadb2 ansible_host=192.168.1.101 ansible_ssh_pass=123 ansible_user=root
+#mariadb2 ansible_host=192.168.1.101 ansible_user=root
+
+#[all:vars]
+#ansible_python_interpreter=/usr/bin/python3
+#ansible_ssh_common_args='-o StrictHostKeyChecking=no'
+#[users]
+#192.168.1.254
+#192.168.1.100
+#192.168.1.101
+[masters]
+dharma ansible_host=192.168.1.254 ansible_ssh_pass=123 ansible_user=ansible
+
+[workers]
+mariadb1 ansible_host=192.168.1.100 ansible_ssh_pass=123 ansible_user=ansible
+mariadb2 ansible_host=192.168.1.101 ansible_ssh_pass=123 ansible_user=ansible
+#[all]
+#kubernetes
+#kubernetes-node-1
+#kubernetes-node-2
+
+#[all:vars]
+# Ubuntu uses python3 instead of python2, we need to set the interpreter for ansible
+#ansible_python_interpreter=/usr/bin/python3
+
+#[kube-master]
+#kubernetes
+
+[kube-node]
+kubernetes-node-1
+kubernetes-node-2
